@@ -825,7 +825,7 @@ if __name__ == "__main__":
     p.add(
         "--learn_rate",
         type=float,
-        default=0.0001,
+        default=0.001,
         help="Learning rate for Adam optimizer",
     )
     p.add(
