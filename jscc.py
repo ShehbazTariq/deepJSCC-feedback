@@ -637,7 +637,7 @@ def main(args):
             callbacks = [
                 tf.keras.callbacks.EarlyStopping(
                     patience=train_patience,
-                    monitor="val_psnr_metric",
+                    monitor="psnr_metric",
                     min_delta=10e-3,
                     verbose=1,
                     mode="max",
@@ -648,7 +648,7 @@ def main(args):
                 # create a new callback
                 tf.keras.callbacks.ModelCheckpoint(
                     filepath=ckpt_file,
-                    monitor="val_psnr_metric",
+                    monitor="psnr_metric",
                     mode="max",
                     save_best_only=True,
                     verbose=1,
@@ -697,7 +697,7 @@ def get_dataset(args):
     data_options.experimental_optimization.apply_default_optimizations = True
     data_options.experimental_optimization.map_parallelization = True
     data_options.experimental_optimization.parallel_batch = True
-    data_options.experimental_optimization.autotune_buffers = True
+    #data_options.experimental_optimization.autotune_buffers = False
 
     def prepare_dataset(dataset, mode, parse_record_fn, bs):
         dataset = dataset.with_options(data_options)
